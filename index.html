@@ -55,12 +55,18 @@
         />
       </form>
 
-      <div class="overlay"></div>
-
       <!-- NOTIFICATIONS AND USER PROFILE -->
       <div class="user-profile-and-alert">
         <section class="notification" aria-label="Notifications">
-          <button tabindex="3">
+          <button
+            tabindex="3"
+            aria-label="Notifications"
+            role="alert"
+            aria-haspopup="tree"
+            aria-expanded="false"
+            aria-controls="notification-popup"
+            id="notification-control"
+          >
             <svg
               width="41"
               height="40"
@@ -78,7 +84,13 @@
           </button>
 
           <!-- NOTIFICATION POPUP -->
-          <div class="notification-popup" aria-live="polite">
+          <div
+            class="notification-popup"
+            id="notification-popup"
+            aria-live="polite"
+            aria-labelledby="notification-control"
+            role="alertdialog"
+          >
             <article>
               <p>Alerts</p>
               <article>
@@ -129,13 +141,25 @@
         </section>
 
         <section class="user-profile">
-          <button tabindex="4" aria-haspopup="true" aria-label="User Menu">
+          <button
+            id="menu-control"
+            tabindex="4"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="User Menu"
+            aria-controls="user-menu-popup"
+          >
             <p class="name">Davii Collection</p>
             <p class="profile-image">DC</p>
           </button>
 
           <!-- USER MENU POPUP -->
-          <div class="user-menu-popup">
+          <div
+            class="user-menu-popup"
+            id="user-menu-popup"
+            aria-labelledby="menu-control"
+            role="menu"
+          >
             <section class="section1">
               <section>
                 <article>
@@ -158,47 +182,102 @@
                   />
                 </svg>
               </section>
-              <p class="all-stores" tabindex="10">
+              <a
+                role="menuitem"
+                href="https://admin.shopify.com"
+                target="_blank"
+                class="all-stores"
+                tabindex="10"
+              >
                 <img
                   src="https://crushingit.tech/hackathon-assets/icon-store.svg"
                   alt="all stores"
                 />
                 All Stores
-              </p>
-            </section>
-            <hr />
-            <section class="section2">
-              <a href="https://admin.shopify.com" target="_blank" tabindex="11"
-                >Help Center</a
-              >
-              <a href="https://admin.shopify.com" target="_blank" tabindex="12"
-                >Changelog</a
-              >
-              <a href="https://admin.shopify.com" target="_blank" tabindex="13"
-                >Community forums</a
-              >
-              <a href="https://admin.shopify.com" target="_blank" tabindex="14"
-                >Hire a Shopify Partner</a
-              >
-              <a href="https://admin.shopify.com" target="_blank" tabindex="15"
-                >Keyboard Shortcuts</a
-              >
-            </section>
-            <hr />
-            <section class="section3">
-              <a href="https://admin.shopify.com" target="_blank" tabindex="16">
-                <p>
-                  <span>David Michael</span>
-                  <span>davidmichael@gmail.com</span>
-                </p>
               </a>
-              <a href="https://admin.shopify.com" target="_blank" tabindex="17"
-                >Manage Account</a
-              >
-              <a href="https://admin.shopify.com" target="_blank" tabindex="18"
-                >Logout</a
-              >
             </section>
+            <hr />
+            <ul class="section2">
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="11"
+                  >Help Center</a
+                >
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="12"
+                  >Changelog</a
+                >
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="13"
+                  >Community forums</a
+                >
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="14"
+                  >Hire a Shopify Partner</a
+                >
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="15"
+                  >Keyboard Shortcuts</a
+                >
+              </li>
+            </ul>
+            <hr />
+            <ul class="section3">
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="16"
+                >
+                  <p>
+                    <span>David Michael</span>
+                    <span>davidmichael@gmail.com</span>
+                  </p>
+                </a>
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="17"
+                  >Manage Account</a
+                >
+              </li>
+              <li>
+                <a
+                  role="menuitem"
+                  href="https://admin.shopify.com"
+                  target="_blank"
+                  tabindex="18"
+                  >Logout</a
+                >
+              </li>
+            </ul>
           </div>
         </section>
       </div>
@@ -216,7 +295,7 @@
             >Select a plan</a
           >
         </article>
-        <button tabindex="27">
+        <button tabindex="27" aria-label="close trial notification">
           <svg
             width="41"
             height="40"
@@ -233,7 +312,7 @@
       </section>
 
       <!-- ONBOARDING -->
-      <section class="onboarding">
+      <section class="onboarding" tabindex="28" aria-label="Onboarding">
         <div class="onboarding-head">
           <p class="heading">Setup guide</p>
           <p>Use this personalized guide to get your store up and running</p>
@@ -244,10 +323,17 @@
             </article>
           </section>
 
-          <button tabindex="28">
+          <button
+            tabindex="28"
+            aria-label="Toggle Onboarding steps"
+            aria-haspopup="true"
+            aria-expanded="true"
+            aria-controls="onboarding-steps"
+            id="onboarding-steps-control"
+          >
             <img
               src="https://crushingit.tech/hackathon-assets/icon-arrow-up.svg"
-              alt="chevron-down"
+              alt="Toggle onboarding steps"
             />
           </button>
         </div>
@@ -255,8 +341,8 @@
         <!-- ONBOARDING STEPS -->
         <div class="onboarding-steps">
           <!-- STEP 1 -->
-          <section class="steps step1">
-            <section class="col1">
+          <section class="steps step1" aria-label="Step 1 of 5" tabindex="30">
+            <section class="col1" aria-label="steps tracker">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="24"
@@ -306,8 +392,14 @@
                 ></path>
               </svg>
             </section>
-            <section class="col2">
-              <p class="topic">Customize your online store</p>
+            <section
+              class="col2"
+              id="onboarding-steps"
+              aria-labelledby="onboarding-steps-control"
+            >
+              <p class="topic" tabindex="30" role="button">
+                Customize your online store
+              </p>
               <div class="contents content1">
                 <article>
                   <p>
