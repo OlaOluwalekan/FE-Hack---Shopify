@@ -54,12 +54,22 @@ userMenuBtnDOM.onclick = (e) => {
 const toggleNotifications = () => {
   userMenuPopupDOM.classList.remove('show')
   notificationPopupDOM.classList.toggle('show')
+  if (notificationPopupDOM.classList.contains('show')) {
+    notificationBtnDOM.ariaExpanded = true
+  } else {
+    notificationBtnDOM.ariaExpanded = false
+  }
 }
 
 // OPEN AND CLOSE NOTIFICATIONS
 const toggleUserMenu = () => {
   notificationPopupDOM.classList.remove('show')
   userMenuPopupDOM.classList.toggle('show')
+  if (userMenuPopupDOM.classList.contains('show')) {
+    userMenuBtnDOM.ariaExpanded = true
+  } else {
+    userMenuBtnDOM.ariaExpanded = false
+  }
 }
 
 const closeAnyMenu = () => {
@@ -72,6 +82,8 @@ window.onkeydown = (e) => {
   let pressedKey = e.key
   if (pressedKey == 'Escape') {
     closeAnyMenu()
+    notificationBtnDOM.ariaExpanded = false
+    userMenuBtnDOM.ariaExpanded = false
   }
 }
 
@@ -86,9 +98,11 @@ toggleOnboardingDOM.onclick = (e) => {
   if (onboardingStepsDOM.className.includes('hide')) {
     toggleOnboardingDOM.style.transform = 'rotate(180deg)'
     onboardingHeadDOM.style.cursor = 'pointer'
+    toggleOnboardingDOM.ariaExpanded = false
   } else {
     toggleOnboardingDOM.style.transform = 'rotate(0deg)'
     onboardingHeadDOM.style.cursor = 'unset'
+    toggleOnboardingDOM.ariaExpanded = true
   }
   e.stopPropagation()
 }
@@ -115,7 +129,7 @@ let count = 0
 stepCounterDOM.textContent = count
 stepProgressDOM.style.width = `${count * 20}%`
 
-stepsDOM.forEach((dom) => {
+stepsDOM.forEach((dom, i) => {
   // const domBtn = dom.querySelector('.col2 > p')
   const checkBtn = dom.querySelector('.col1')
   dom.onclick = () => {
@@ -134,6 +148,7 @@ stepsDOM.forEach((dom) => {
       svgDone.classList.remove('show')
       svgUndone.classList.remove('hide')
       svgDoing.style.transform = 'rotate(0deg)'
+      checkBtn.ariaLabel = `steps tracker, step ${i + 1} done`
       done = false
       count--
     } else {
